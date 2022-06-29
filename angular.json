@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "monorepo-fullstack": "apps/monorepo-fullstack",
+    "monorepo-fullstack-e2e": "apps/monorepo-fullstack-e2e"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/monorepo-fullstack/src",
+  "prefix": "monorepo-fullstack-github-actions",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/monorepo-fullstack",
+        "index": "apps/monorepo-fullstack/src/index.html",
+        "main": "apps/monorepo-fullstack/src/main.ts",
+        "polyfills": "apps/monorepo-fullstack/src/polyfills.ts",
+        "tsConfig": "apps/monorepo-fullstack/tsconfig.app.json",
+        "assets": [
+          "apps/monorepo-fullstack/src/favicon.ico",
+          "apps/monorepo-fullstack/src/assets"
+        ],
+        "styles": ["apps/monorepo-fullstack/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/monorepo-fullstack/src/environments/environment.ts",
+              "with": "apps/monorepo-fullstack/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "monorepo-fullstack:build:production"
+        },
+        "development": {
+          "browserTarget": "monorepo-fullstack:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/monorepo-fullstack/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "monorepo-fullstack:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/monorepo-fullstack/**/*.ts",
+          "apps/monorepo-fullstack/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/monorepo-fullstack"],
+      "options": {
+        "jestConfig": "apps/monorepo-fullstack/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
