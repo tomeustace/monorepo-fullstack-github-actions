@@ -4,10 +4,15 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
+    "lint": "eslint --ext .js,.ts .",
+    "postinstall_disable": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
+  },
+  "main": "dist/apps/api/main.js",
+  "engines": {
+    "node": "16"
   },
   "private": true,
   "dependencies": {
@@ -21,12 +26,15 @@
     "@angular/router": "~14.0.0",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
-    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/platform-express": "^8.4.7",
     "@nrwl/angular": "14.3.6",
+    "express": "^4.18.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~14.0.0",

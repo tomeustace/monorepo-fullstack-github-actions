@@ -13,3 +13,5 @@ export class AppController {
     return this.appService.getData();
   }
 }
+// can call with below in terminal
+// curl -m 70 -X GET https://europe-west1-firebase-nestjs-api-demo.cloudfunctions.net/api/hello -H "Authorization:bearer $(gcloud auth print-identity-token)"
