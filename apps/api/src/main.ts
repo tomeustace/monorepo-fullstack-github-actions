@@ -1,6 +1,6 @@
 import {ExpressAdapter, NestExpressApplication} from '@nestjs/platform-express';
+import {NestFactory} from '@nestjs/core';
 import * as express from 'express';
-import { FIREBASE_CONFIG_VAR } from 'firebase-admin/lib/app/lifecycle';
 import * as functions from 'firebase-functions';
 import {AppModule} from './app/app.module';
 const server: express.Express = express();
@@ -19,6 +19,3 @@ export const api: functions.HttpsFunction = functions.region('europe-west1').htt
 
 // can call with below in terminal
 // curl -m 70 -X GET https://europe-west1-firebase-nestjs-api-demo.cloudfunctions.net/api/hello -H "Authorization:bearer $(gcloud auth print-identity-token)"
-
-
-NEED TO CREATE REPO ON GITHUB THEN TEST THE FIREBASE.YML
