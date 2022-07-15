@@ -5,7 +5,7 @@ import * as functions from 'firebase-functions';
 import {AppModule} from './app/app.module';
 const server: express.Express = express();
 export const createNestServer = async (expressInstance: express.Express) => {
-  console.log("test action")
+  console.log("test action!!")
   const adapter = new ExpressAdapter(expressInstance);
   const app = await NestFactory.create<NestExpressApplication>(
     AppModule, adapter, {},
