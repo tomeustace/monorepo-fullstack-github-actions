@@ -65,4 +65,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONOREPO_GITHUB_ACTIONS }}'
           channelId: live
-          projectId: monorepo-github-actions
+          projectId: firebase-nestjs-api-demo
